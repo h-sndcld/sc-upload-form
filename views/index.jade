@@ -1,0 +1,35 @@
+.span6
+  form.form-horizontal(action="/upload/"+uuid, enctype="multipart/form-data", method="POST", target="upload_iframe", id="upload-form")
+    fieldset
+      legend Upload Form
+      .control-group
+        label.control-label(for='upload') File
+        .controls
+          input(type="file", id="upload", name="upload")
+
+      .control-group
+        .controls
+          label#status-text select file
+          .progress
+            .bar(style="width: 0%")
+
+      iframe#upload-iframe(name="upload_iframe", id="upload_iframe", src="", style="width:0;height:0;border:0px solid #fff;")
+
+  form.form-horizontal(action="/update/"+uuid, method="POST", id="update-form")
+    fieldset
+      .control-group
+        .controls
+          textarea.input-xxlarge(id="title", name="title", placeholder="Type a description of this file ...", rows="5")
+
+      .control-group
+        button.btn.btn-primary.pull-right(type="submit") Save
+
+script
+  (function(){ 
+    var upload_form = new UploadForm({
+        uploadForm: 'upload-form'
+      , updateForm: 'update-form'
+      , progressPath: '/progress/#{uuid}'
+      , statusId: 'status-text'
+    });
+  })();

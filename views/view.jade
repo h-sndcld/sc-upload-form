@@ -1,0 +1,20 @@
+h1 Upload result
+
+h2 title
+p= upload.title
+
+h2 file link
+p
+  a(href="/files/#{uuid}/#{upload.safe_name}") /files/#{uuid}/#{upload.safe_name}
+
+h2 server path
+p= upload.path
+
+h2 original name
+p= upload.name
+
+h2 file type
+p= upload.type
+
+h2 file size
+p= upload.size
