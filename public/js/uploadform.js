@@ -34,6 +34,7 @@ var UploadForm = function(options) {
   });
 
   iframe.load(function() {
+    if(!uploading) return;
     var path = iframe.contents().find('body').text();
 
     uploading=false;
